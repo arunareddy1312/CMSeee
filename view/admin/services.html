@@ -124,7 +124,7 @@
                   <h4 class="card-title ">Services Table</h4>
                   <p class="card-category">Create Update delete Services</p>
                   <div class="text-right ">
-                    <a class="btn" style="margin-top: -78px;" href=" " data-toggle="modal" data-target="#add">Add</a>
+                    <a class="btn" style="margin-top: -78px;" onclick="openAddService()">Add</a>
                   </div>
                 </div>
                 <div class="card-body">
@@ -132,32 +132,22 @@
                     <table class="table">
                       <thead class=" text-primary">
                         <th>
+                          ID
+                        </th>
+                        <th>
                           Title
                         </th>
                         <th>
                           Text
                         </th>
                         <th>
-                          Picture
+                          Icon
                         </th>
                       </thead>
-                      <tbody>
-                        <tr>
-                          <td>
-                            1
-                          </td>
-                          <td>
-                            Dakota Rice
-                          </td>
-                          <td>
-                            Niger
-                          </td>
-                          <td>
-                            <a class="btn btn-primary" id="edit" href=" ">Edit</a>
-                            <a class="btn btn-primary" id="delete" href=" ">Delete</a>
-                          </td>
-                        </tr>
-                      </tbody>
+                      <div class="table-responsive">
+                        <tbody id="sericeTable">
+                        </tbody>
+                      </div>
                     </table>
                   </div>
                 </div>
@@ -170,42 +160,47 @@
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header text-center">
-              <h4 class="modal-title w-100 font-weight-bold">New Service</h4>
+              <h4 class="modal-title w-100 font-weight-bold" id="serviceHeader">Add Service</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <form>
+            <form id="signUp" method="POST" action="" enctype="multipart/form-data">
               <div class="modal-body mx-3">
                 <div class="md-form mb-5">
                   <div class="form-group">
                     <label class="bmd-label-floating">Title</label>
-                    <input type="text" class="form-control">
+                    <input type="text" id="service-title" name="service-title" class="form-control">
                   </div>
                 </div>
                 <div class="md-form mb-5">
                   <div class="form-group">
                     <label class="bmd-label-floating">Text</label>
-                    <input type="text" class="form-control">
+                    <input type="text" id="service-text" name="service-text" class="form-control">
                   </div>
                 </div>
-
                 <div class="md-form mb-5">
                   <div class="form-group">
-                    <label class="bmd-label-floating">Picture</label>
-                    <input type="text" class="form-control">
+                    <label class="bmd-label-floating" for="inputGroupSelect01">Icon</label>
+                    <select class="custom-select bmd-label-floating" id="inputGroupSelect01">
+                      <option selected>Choose...</option>
+                      <option value="1">bi bi-calendar4-week</option>
+                      <option value="2">bi bi-brightness-high</option>
+                      <option value="3">bi bi-binoculars</option>
+                      <option value="4">bi bi-bar-chart</option>
+                      <option value="5">bi bi-card-checklist</option>
+                      <option value="6">bi bi-briefcase</option>
+                    </select>
                   </div>
                 </div>
-              </div>
-              <div class="modal-footer d-flex justify-content-center">
-                <button class="btn btn-primary">submit</button>
-              </div>
+                <div class="modal-footer d-flex justify-content-center">
+                  <button class="btn btn-primary" type="button" data-dismiss="modal"
+                    onclick="addservices()">submit</button>
+                </div>
             </form>
-
           </div>
         </div>
       </div>
-
       <footer class="footer">
         <div class="container-fluid">
           <nav class="float-left">
@@ -265,6 +260,7 @@
   <script src="../admin/assets/js/material-dashboard.js?v=2.1.2" type="text/javascript"></script>
   <!-- Material Dashboard DEMO methods, don't include it in your project! -->
   <script src="../admin/assets/demo/demo.js"></script>
+  <script src="../admin/assets/js/serviceAdmin.js"></script>
   <script>
     $(document).ready(function () {
       $().ready(function () {
